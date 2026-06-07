@@ -1,0 +1,32 @@
+on init
+    mkdir /tvinfo 0771 system system
+    mkdir /persist 0771 system system
+    mkdir /param 0771 system system
+
+    write /sys/devices/backlight.14/backlight/aml-bl/brightness 255
+    chmod 0666 /sys/devices/backlight.14/backlight/aml-bl/brightness
+
+
+on fs
+    wait /dev/block/param
+    mount ext4 /dev/block/param /param noatime nodiratime norelatime nosuid nodev noauto_da_alloc
+
+on boot
+    start display_init
+    start console
+
+service display_init /sbin/display-init.sh
+    class core
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
+
+service console /sbin/sh
+    class default
+    console
+    disabled
+    oneshot
+    user root
+    group root shell
+    seclabel u:r:recovery:s0

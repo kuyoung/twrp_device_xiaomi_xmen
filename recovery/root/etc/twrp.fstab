@@ -1,0 +1,27 @@
+# TWRP fstab for Xiaomi MiTV4-ANSM0 / xmen / Amlogic TXL
+
+# mount point    fstype    device          flags
+/system      ext4    /dev/block/system     flags=display="System";backup=1;wipeingui
+/data        ext4    /dev/block/data       flags=display="Data";backup=1;wipeingui
+/cache       ext4    /dev/block/cache      flags=display="Cache";backup=1;wipeingui
+
+/tvinfo      ext4    /dev/block/tvinfo     flags=display="TVInfo";backup=1
+/persist     ext4    /dev/block/persist    flags=display="Persist";backup=1
+/param       ext4    /dev/block/param      flags=display="Param";backup=1
+/backup      ext4    /dev/block/backup     flags=display="Backup";backup=1
+
+/boot        emmc    /dev/block/boot       flags=display="Boot";backup=1;flashimg=1
+/recovery    emmc    /dev/block/recovery   flags=display="Recovery";backup=1;flashimg=1
+/logo        emmc    /dev/block/logo       flags=display="Logo";backup=1;flashimg=1
+/misc        emmc    /dev/block/misc       flags=display="Misc";backup=1
+
+/env         emmc    /dev/block/env         flags=display="Env";backup=1
+/crypt       emmc    /dev/block/crypt       flags=display="Crypt";backup=1
+/cri_data    emmc    /dev/block/cri_data    flags=display="CRI Data";backup=1
+/panic       emmc    /dev/block/panic       flags=display="Panic";backup=1
+/reserved    emmc    /dev/block/reserved    flags=display="Reserved";backup=1
+/bootloader  emmc    /dev/block/bootloader  flags=display="Bootloader";backup=1
+
+/usb_otg     vfat    /dev/block/sda1       flags=display="USB-OTG";storage;removable
+/usb_otg2    auto    /dev/block/sda        flags=display="USB-OTG2";storage;removable
+/external_sd vfat    /dev/block/mmcblk1p1  flags=display="External SD";storage;removable
